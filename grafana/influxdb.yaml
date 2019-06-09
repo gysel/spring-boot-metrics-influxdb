@@ -1,0 +1,18 @@
+# config file version
+apiVersion: 1
+
+datasources:
+  - name: InfluxDb
+    type: influxdb
+    access: proxy
+    orgId: 1
+    url: http://influxdb:8086
+    user: admin
+    password: secret
+    database: boot
+    isDefault: true
+    version: 1
+    editable: false
+    jsonData:
+      httpMode: GET
+      timeInterval: "30s"

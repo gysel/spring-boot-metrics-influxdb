@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  grafana:
+    image: grafana/grafana:6.2.2
+    ports:
+      - 3000:3000
+    volumes:
+      - ${PWD}/grafana/influxdb.yaml:/etc/grafana/provisioning/datasources/influxdb.yaml
+      - ${PWD}/grafana/SpringBootDashboard.json:/var/lib/grafana/dashboards/SpringBoot.json
+      - ${PWD}/grafana/dashboards.yaml:/etc/grafana/provisioning/dashboards/dashboards.yaml
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin
+  influxdb:
+    image: influxdb:1.7.6
+    ports:
+      - 8086:8086
+    volumes:
+      - /var/lib/influxdb
+    environment:
+      INFLUXDB_HTTP_AUTH_ENABLED: "true"
+      INFLUXDB_DB: boot
+      INFLUXDB_USER: user
+      INFLUXDB_USER_PASSWORD: pass
+      INFLUXDB_ADMIN_USER: admin
+      INFLUXDB_ADMIN_PASSWORD: secret
