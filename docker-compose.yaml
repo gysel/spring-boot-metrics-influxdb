@@ -6,9 +6,9 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ${PWD}/grafana/influxdb.yaml:/etc/grafana/provisioning/datasources/influxdb.yaml
-      - ${PWD}/grafana/SpringBootDashboard.json:/var/lib/grafana/dashboards/SpringBoot.json
-      - ${PWD}/grafana/dashboards.yaml:/etc/grafana/provisioning/dashboards/dashboards.yaml
+      - ./grafana/influxdb.yaml:/etc/grafana/provisioning/datasources/influxdb.yaml
+      - ./grafana/SpringBootDashboard.json:/var/lib/grafana/dashboards/SpringBoot.json
+      - ./grafana/dashboards.yaml:/etc/grafana/provisioning/dashboards/dashboards.yaml
     environment:
       GF_SECURITY_ADMIN_PASSWORD: admin
   influxdb:
